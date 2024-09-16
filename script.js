@@ -123,3 +123,25 @@ class Clock30 {
 		this.timeUpdateLoop = setTimeout(this.timeUpdate.bind(this),1e3);
 	}
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const themeBtn = document.getElementById('theme-btn');
+    const currentTheme = localStorage.getItem('theme') || 'white-theme';
+
+    // Apply the current theme
+    document.body.classList.add(currentTheme);
+
+    themeBtn.addEventListener('click', () => {
+        // Toggle the theme
+        if (document.body.classList.contains('white-theme')) {
+            document.body.classList.remove('white-theme');
+            document.body.classList.add('black-theme');
+            localStorage.setItem('theme', 'black-theme');
+        } else {
+            document.body.classList.remove('black-theme');
+            document.body.classList.add('white-theme');
+            localStorage.setItem('theme', 'white-theme');
+        }
+    });
+});
